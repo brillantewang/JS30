@@ -58,7 +58,46 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+document.addEventListener("keydown", function (event) {
+if (event.defaultPrevented) {
+  return; // Do nothing if the event was already processed
+}
 
+switch (event.key) {
+  case "a":
+    // Do something for "down arrow" key press.
+    break;
+  case "s":
+    // Do something for "up arrow" key press.
+    break;
+  case "d":
+    // Do something for "left arrow" key press.
+    break;
+  case "f":
+    // Do something for "right arrow" key press.
+    break;
+  case "g":
+    // Do something for "enter" or "return" key press.
+    break;
+  case "h":
+    // Do something for "esc" key press.
+    break;
+  case "j":
+    // Do something for "esc" key press.
+    break;
+  case "k":
+    // Do something for "esc" key press.
+    break;
+  case "l":
+    // Do something for "esc" key press.
+    break;
+  default:
+    return; // Quit when this doesn't handle the key event.
+}
+
+// Cancel the default action to avoid it being handled twice
+event.preventDefault();
+}, true);
 </script>
 
 
