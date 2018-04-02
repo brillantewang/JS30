@@ -62,13 +62,46 @@
       background:black;
       position: absolute;
       top:50%;
+      transition: all .5s;
+      transition-timing-function: cubic-bezier(0.16, 2.31, 0.74, 0.64);
+      transform-origin: right;
+      transform: rotate(90deg);
     }
 
   </style>
 
   <script>
+    function updateTime() {
+      let today = new Date();
+      let seconds = today.getSeconds();
+      let minutes = today.getMinutes();
+      let hours = today.getHours();
 
+      let secondHand = document.querySelector(".second-hand");
+      let minuteHand = document.querySelector(".min-hand");
+      let hourHand = document.querySelector(".hour-hand");
 
+      let secondDegrees = (seconds * 6) + 90;
+      let minuteDegrees = (minutes * 6) + 90;
+      let hourDegrees = (hours * 30) + 90;
+
+      let hands = document.querySelectorAll(".hand")
+      hands.forEach(hand => {
+        hand.style.transition = "all .5s";
+        hand.style.transitionTimingFunction = "cubic-bezier(0.16, 2.31, 0.74, 0.64)";
+      })
+
+      if (seconds === 0) secondHand.style.transition = "none";
+      if (minutes === 0) minuteHand.style.transition = "none";
+      if (hours === 0) hourHand.style.transition = "none";
+
+      secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+      minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
+      hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
   </script>
 </body>
 </html>
